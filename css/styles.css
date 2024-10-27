@@ -1,0 +1,111 @@
+:root {
+  --primary-color: #1c8fd0;
+  --background-color: #f0f0f0;
+  --text-color: #333;
+  --hover-color: #1a7db0;
+}
+
+:root[data-theme="dark"] {
+  --primary-color: #1c8fd0;
+  --background-color: #333;
+  --text-color: #f0f0f0;
+  --hover-color: #1a7db0;
+}
+
+body {
+  font-family: "Rajdhani", Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--hover-color);
+}
+
+main {
+  margin-top: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input,
+textarea {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--primary-color);
+}
+
+.tasks {
+  margin-top: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+  transition: box-shadow 0.3s ease;
+}
+
+li:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 600px) {
+  header {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  header button {
+    width: 50%;
+    margin-top: 3.75%;
+  }
+  button {
+    width: 100%;
+    margin-top: 10px;
+  }
+}

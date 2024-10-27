@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Listify - To-Do List App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Listify</h1>
+        <button id="theme-toggle-btn">Toggle Dark/Light Mode</button>
+      </header>
+      <main>
+        <form id="taskForm">
+          <input type="text" id="taskTitle" placeholder="Task Title" required />
+          <textarea
+            id="taskDescription"
+            placeholder="Task Description"
+          ></textarea>
+          <button type="submit">Add Task</button>
+        </form>
+        <div class="tasks">
+          <h2>Your Tasks</h2>
+          <ul id="taskList"></ul>
+        </div>
+      </main>
+    </div>
+    <script src="js/index.js"></script>
+  </body>
+</html>
