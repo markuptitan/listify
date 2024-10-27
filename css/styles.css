@@ -3,6 +3,8 @@
   --background-color: #f0f0f0;
   --text-color: #333;
   --hover-color: #1a7db0;
+  --input-color: #ffffff;
+  --input-text-color: #000000;
 }
 
 :root[data-theme="dark"] {
@@ -10,6 +12,8 @@
   --background-color: #333;
   --text-color: #f0f0f0;
   --hover-color: #1a7db0;
+  --input-color: #333333;
+  --input-text-color: #ffffff;
 }
 
 body {
@@ -64,6 +68,8 @@ textarea {
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
+  background-color: var(--input-color);
+  color: var(--input-text-color);
   border-radius: 4px;
   transition: border-color 0.3s ease;
 }
