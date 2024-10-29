@@ -17,3 +17,26 @@ toggleButton.addEventListener("click", () => {
 });
 
 updateToggleButton();
+
+class Task {
+  constructor(title, description = "", dueDate = null) {
+    this.title = title;
+    this.description = description;
+    this.isCompleted = false;
+    this.createdAt = new Date();
+    this.dueDate = dueDate;
+  }
+
+  markAsCompleted() {
+    this.isCompleted = true;
+  }
+
+  editTask(newTitle, newDescription) {
+    this.title = newTitle;
+    this.description = newDescription;
+  }
+
+  formatTask() {
+    return `${this.title} (Completed: ${this.completed})`;
+  }
+}
