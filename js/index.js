@@ -37,6 +37,6 @@ class Task {
   }
 
   formatTask() {
-    return `${this.title} (Completed: ${this.completed})`;
+    return `${this.title} (Completed: ${this.isCompleted})`;
   }
 }
