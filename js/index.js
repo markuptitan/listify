@@ -61,6 +61,7 @@ const addTask = (task) => {
       return 1;
     return new Date(firstTask.dueDate) - new Date(secondTask.dueDate);
   });
+  saveToLocalStorage();
 };
 
 const removeTask = (taskId) => {
@@ -68,4 +69,25 @@ const removeTask = (taskId) => {
   if (taskIndex !== -1) {
     tasksArray.splice(taskIndex, 1);
   }
+  saveToLocalStorage();
 };
+
+const saveToLocalStorage = () => {
+  localStorage.setItem("tasksArray", JSON.stringify(tasksArray));
+  localStorage.setItem("taskCounter", taskCounter);
+};
+
+const loadFromLocalStorage = () => {
+  const storedTasks = localStorage.getItem("tasksArray");
+  const storedCounter = localStorage.getItem("taskCounter");
+
+  if (storedTasks) {
+    tasksArray.push(...JSON.parse(storedTasks));
+  }
+
+  if (storedCounter) {
+    taskCounter = parseInt(storedCounter, 10);
+  }
+};
+
+loadFromLocalStorage();
