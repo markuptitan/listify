@@ -5,6 +5,7 @@
   --hover-color: #1a7db0;
   --input-color: #ffffff;
   --input-text-color: #000000;
+  --hover-color: #1a7db0;
 }
 
 :root[data-theme="dark"] {
@@ -13,6 +14,7 @@
   --text-color: #f0f0f0;
   --hover-color: #1a7db0;
   --input-color: #333333;
+  --hover-color: #555;
   --input-text-color: #ffffff;
 }
 
@@ -114,5 +116,95 @@ li:hover {
   button {
     width: 100%;
     margin-top: 10px;
+  }
+}
+
+/* Task display styles */
+.task-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.task-card {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.45s, color 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.task-card:hover {
+  background-color: var(--hover-color);
+}
+
+.task-title {
+  font-size: 1.25em;
+  margin: 0 0 10px;
+}
+
+.task-description {
+  font-size: 1em;
+  margin: 0;
+}
+
+.task-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.task-btn {
+  padding: 10px 15px;
+  font-size: 0.9em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.mark-complete-btn {
+  background-color: #4caf50;
+}
+
+.mark-complete-btn:hover {
+  background-color: #45a049;
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #e53935;
+}
+
+/* Adding responsiveness */
+@media (max-width: 600px) {
+  .task-container {
+    padding: 10px;
+  }
+
+  .task-card {
+    padding: 10px;
+  }
+}
+
+@media (min-width: 601px) {
+  .task-container {
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .task-card {
+    width: calc(33.333% - 20px);
   }
 }
