@@ -35,7 +35,6 @@ class Task {
     this.startDate = new Date().toISOString().split("T")[0];
     this.startTime = new Date().toTimeString().split(" ")[0];
     this.dueDate = dueDate;
-    this.id = generateId();
   }
 
   markAsCompleted() {
@@ -90,4 +89,61 @@ const loadFromLocalStorage = () => {
   }
 };
 
+const taskForm = document.getElementById("taskForm");
+taskForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const title = document.getElementById("taskTitle").value.trim();
+  const description = document.getElementById("taskDescription").value.trim();
+  if (title && description) {
+    const task = {
+      title,
+      description,
+      dueDate: new Date(),
+      startDate: new Date().toISOString().split("T")[0],
+      completed: false,
+    };
+    addTask(task);
+    setTimeout(() => {
+      document.getElementById("taskTitle").value = "";
+      document.getElementById("taskDescription").value = "";
+    }, 2000);
+  } else {
+    alert("Please fill out both the title and description.");
+  }
+  render();
+});
+
+const createTaskCard = (task) => {
+  return `
+    <div class="task-card">
+      <h3 class="task-title">${task.title}</h3>
+      <p class="task-description">${task.description}</p>
+      <p class="task-start-date">Start date: ${task.startDate}</p>
+      <div class="task-actions">
+        <button class="task-btn mark-complete-btn">Mark as Complete</button>
+        <button class="task-btn delete-btn">Delete</button>
+      </div>
+    </div>
+  `;
+};
+
+const render = () => {
+  const taskContainer = document.querySelector(".task-container");
+  taskContainer.innerHTML = "";
+  if (tasksArray.length === 0) {
+    taskContainer.innerHTML =
+      '<p class="no-tasks">Currently no tasks to display</p>';
+    return;
+  }
+  taskContainer.innerHTML = '<p class="loading">Loading tasks...</p>';
+  setTimeout(() => {
+    taskContainer.innerHTML = "";
+    tasksArray.forEach((task) => {
+      const taskCardHtml = createTaskCard(task);
+      taskContainer.innerHTML += taskCardHtml;
+    });
+  }, 3000);
+};
+
 loadFromLocalStorage();
+render();
