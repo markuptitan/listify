@@ -208,3 +208,28 @@ li:hover {
     width: calc(33.333% - 20px);
   }
 }
+
+.no-tasks {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  text-align: center;
+  padding: 20px;
+  background-color: var(--background-color);
+  border-radius: 8px;
+  margin: 20px auto;
+  width: 80%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+}
+
+.no-tasks::before {
+  content: "🛑";
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.no-tasks:hover {
+  background-color: var(--hover-color);
+  cursor: pointer;
+}
