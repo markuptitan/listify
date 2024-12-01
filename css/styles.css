@@ -220,18 +220,42 @@ li:hover {
   width: 80%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.5s ease;
+  animation: fadeIn 1s ease-in-out;
 }
 
 .no-tasks::before {
-  content: "🛑";
-  font-size: 2rem;
+  content: "⚠️";
+  font-size: 3rem;
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  animation: flash 1.5s infinite;
+  text-align: center;
+}
+
+@keyframes flash {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .no-tasks:hover {
   background-color: var(--hover-color);
   cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .spinner {
