@@ -20,10 +20,11 @@ updateToggleButton();
 
 const tasksArray = [];
 
-let taskCounter = 0;
+let taskCounter = parseInt(localStorage.getItem("idHighest")) || 0;
 
 const generateId = () => {
   taskCounter++;
+  localStorage.setItem("idHighest", taskCounter);
   return `task-${taskCounter}`;
 };
 
@@ -33,8 +34,9 @@ class Task {
     this.description = description;
     this.isCompleted = false;
     this.startDate = new Date().toISOString().split("T")[0];
-    this.startTime = new Date().toTimeString().split(" ")[0];
+    this.startTime = new Date().toTimeString().split("T")[0];
     this.dueDate = dueDate;
+    this.id = generateId();
   }
 
   markAsCompleted() {
@@ -101,6 +103,7 @@ taskForm.addEventListener("submit", (event) => {
       dueDate: new Date(),
       startDate: new Date().toISOString().split("T")[0],
       completed: false,
+      id: generateId(),
     };
     addTask(task);
     setTimeout(() => {
