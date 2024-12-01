@@ -71,6 +71,16 @@ const removeTask = (taskId) => {
     tasksArray.splice(taskIndex, 1);
   }
   saveToLocalStorage();
+  render();
+};
+
+const markAsComplete = (taskId) => {
+  const task = tasksArray.find((task) => task.id === taskId);
+  if (task) {
+    task.completed = true;
+  }
+  saveToLocalStorage();
+  render();
 };
 
 const saveToLocalStorage = () => {
@@ -123,8 +133,13 @@ const createTaskCard = (task) => {
       <p class="task-description">${task.description}</p>
       <p class="task-start-date">Start date: ${task.startDate}</p>
       <div class="task-actions">
-        <button class="task-btn mark-complete-btn">Mark as Complete</button>
-        <button class="task-btn delete-btn">Delete</button>
+        <button class="task-btn mark-complete-btn" onclick="markAsComplete('${
+          task.id
+        }')">
+          ${task.completed ? "Completed" : "Mark as Complete"}</button>
+        <button class="task-btn delete-btn" onclick="removeTask('${
+          task.id
+        }')">Delete</button>
       </div>
     </div>
   `;
@@ -139,8 +154,7 @@ const render = () => {
   spinner.classList.remove("hidden");
   spinner.classList.add("visible");
   setTimeout(() => {
-    spinner.classList.remove("visible");
-    spinner.classList.add("hidden");
+    taskContainer.innerHTML = "";
     if (tasksArray.length === 0) {
       taskContainer.innerHTML =
         '<p class="no-tasks">Currently no tasks to display</p>';
