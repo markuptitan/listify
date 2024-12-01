@@ -129,15 +129,20 @@ const createTaskCard = (task) => {
 
 const render = () => {
   const taskContainer = document.querySelector(".task-container");
+  const spinner = taskContainer.querySelector(".spinner");
   taskContainer.innerHTML = "";
-  if (tasksArray.length === 0) {
-    taskContainer.innerHTML =
-      '<p class="no-tasks">Currently no tasks to display</p>';
-    return;
-  }
-  taskContainer.innerHTML = '<p class="loading">Loading tasks...</p>';
+
+  taskContainer.appendChild(spinner);
+  spinner.classList.remove("hidden");
+  spinner.classList.add("visible");
   setTimeout(() => {
-    taskContainer.innerHTML = "";
+    spinner.classList.remove("visible");
+    spinner.classList.add("hidden");
+    if (tasksArray.length === 0) {
+      taskContainer.innerHTML =
+        '<p class="no-tasks">Currently no tasks to display</p>';
+      return;
+    }
     tasksArray.forEach((task) => {
       const taskCardHtml = createTaskCard(task);
       taskContainer.innerHTML += taskCardHtml;
